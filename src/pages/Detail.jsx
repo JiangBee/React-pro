@@ -3,6 +3,7 @@ import api from '@/api/detail/index.js';
 import Hapi from '@/api/Huan/index.js';
 import apiCookie from '@/api/goods/Cookie.js';
 import Yapi from '@/api/Yu/index.js';
+import Back from '@/components/back/back.jsx';
 import '@/scss/detailStyle.scss'
 class Com extends React.Component {
   constructor (props) {
@@ -17,11 +18,11 @@ class Com extends React.Component {
   }
   //根据返回的id进行请求数据
   componentDidMount () {
-    // const id = this.props.match.params.id + '';
+    const id = this.props.match.params.id + '';
     // console.log(id);
     // let id= 3741065 + '';
     // let id= 16132 +'';
-    let id = '5c6acdcabf8d150e2ca4997d';
+    // let id = '5c6acdcabf8d150e2ca4997d';
     if (id.length === 5) {
       Hapi.requestDetailData(id).then(data => {
         console.log(data);
@@ -65,6 +66,11 @@ class Com extends React.Component {
     }
   }
 
+  //返回
+  // goback () {
+  //   console.log(this);
+  //   // this.props.history.go(-1);
+  // }
   //  加入购物车操作
   joinCart (e) {
     if (e.cancelable) {
@@ -73,12 +79,11 @@ class Com extends React.Component {
         e.preventDefault()
       }
     }
-    console.log("ok")
     if (localStorage.getItem("isLogin") === 'ok') {
       let goodsobj = {
         'imgUrl': this.state.imgUrl,
         'price': this.state.price,
-        'produceName': this.state.productName,
+        'productName': this.state.productName,
         'productId': this.state.productId,
         'count': 1,
         'flag': false
@@ -108,18 +113,23 @@ class Com extends React.Component {
     }
   }
 
+
   goCart () {
     if (localStorage.getItem("isLogin") === 'ok') {
       this.props.history.push("/cart");
     } else {
       this.props.history.push("/userapp/register");
     }
-    console.log("go cart");
+    // console.log("go cart");
   }
   render () {
     return (
       <div className="box">
-        <header className="header"></header>
+        <header className="header detailheader">
+          <Back props={this.props}></Back>
+          <p>商品详情</p>
+          <span className="fa fa-th-list fa-lg"></span>
+        </header>
         <div className="content ">
           <div className="goodsdetail">
             <p><img src={this.state.imgUrl} alt={this.state.productName}/></p>
@@ -175,7 +185,6 @@ class Com extends React.Component {
           </div>
         </div>
       </div>
-
     )
   }
 }

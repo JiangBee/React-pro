@@ -9,6 +9,21 @@
     margin-top: .03rem;
   }
 }
+.detailheader{
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items();
+  button{
+    border: none;
+    outline: none;
+    background-color: #acc;
+    margin-left: .2rem;
+  }
+  p{}
+  span{
+    margin-right: .2rem;
+  }
+}
 .content{
   @include overflow();
   .goodsdetail{

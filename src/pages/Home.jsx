@@ -1,7 +1,7 @@
 import React from 'react';
 import api from '@/api/home/index.js';
 // import {Link} from 'react-router-dom';
-import { Carousel, WingBlank } from 'antd-mobile';
+// import { Carousel, WingBlank } from 'antd-mobile';
 import List from '@/components/home/List.jsx';
 class Com extends React.Component {
   constructor (props) {

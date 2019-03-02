@@ -2,6 +2,7 @@
 html, body, #root, .box{
   position: relative;
   @include rect(100%, 100%);
+  touch-action: none;
 }
 .icon {
   width: 1em;

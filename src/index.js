@@ -4,12 +4,14 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import App from './layout/App';
 import UserApp from '@/layout/UserApp';
 import DetailApp from '@/layout/DetailApp';
+import CartApp from '@/layout/CartApp.jsx';
 import * as serviceWorker from './serviceWorker';
 import './main.scss';
 
 ReactDOM.render(
   <Router>
     <Switch>
+      <Route path="/cart" component = { CartApp }></Route>
       <Route path="/detail" component = { DetailApp } />
       <Route path="/userapp" component = { UserApp} />
       <Route path="/" component = { App } />

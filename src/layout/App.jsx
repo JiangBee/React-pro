@@ -2,7 +2,6 @@ import React from 'react';
 import {NavLink, Switch, Route, Redirect} from 'react-router-dom';
 import Home from '@/pages/Home';
 import Kind from '@/pages/Kind';
-import Cart from '@/pages/Cart';
 import User from '@/pages/User';
 import Search from '@/pages/Search';
 
@@ -14,7 +13,6 @@ class App extends React.Component {
         <Switch>
           <Route path="/home" component = { Home }></Route>
           <Route path="/kind" component = { Kind }></Route>
-          <Route path="/cart" component = { Cart }></Route>
           <Route path="/user" component = { User }></Route>
           <Route path="/search" component = { Search }></Route>
           <Redirect path="/" to="/home"></Redirect>
