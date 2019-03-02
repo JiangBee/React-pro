@@ -1,0 +1,150 @@
+@import '@/qunar/reset.scss';
+
+.detail_header{
+  @include rect(100%, auto);//width:100%,height:auto
+  @include flexbox();
+  @include justify-content(space-between);
+  padding: 0.05rem .1rem;
+  .detailgo{
+    margin-top: .03rem;
+  }
+}
+.content{
+  @include overflow();
+  .goodsdetail{
+    @include overflow();
+    margin-bottom: .2rem;
+    p{
+      margin-top: .05rem;
+      padding-bottom: .05rem;
+      @include text-align();
+      @include rect(auto, 3rem);
+      @include overflow();
+      border-bottom: 1px solid #ddd;
+      img{
+        @include rect(3rem, auto);
+        display: inline-block;
+        margin: 0 auto;
+        vertical-align: middle;
+      }
+    }
+    h2{
+      margin:.1rem .2rem 0 .2rem;
+      span{
+        display: inline-block;
+      }
+    }
+    h3{
+      margin:.1rem .2rem .1rem .2rem;
+    }
+    h4{
+      margin:.15rem .2rem 0 .2rem;
+      color: #858585
+    }
+    h5{
+      margin:.2rem 0 0 0;
+      color: #858585;
+      font-size: .12rem;
+      @include flexbox();
+      @include justify-content(space-around);
+    }
+  }
+  .bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    @include rect(100%,.4rem);
+    background-color: #fff;
+    ul{
+      @include flexbox();
+      @include rect(auto,100%);
+      @include justify-content(space-around);
+      @include align-items(center);
+      li{
+        @include flex();
+        @include flexbox();
+        @include rect(auto,100%);
+        @include flex-direction(column);
+        @include justify-content();
+        @include align-items();
+        p{
+          font-size: .11rem;
+          margin-top: .03rem;
+        }
+        button{
+          border: none;
+          outline: none;
+          width: 1rem;
+          height: .4rem;
+          @include text-align();
+          background-color: #eee;
+          &.active{
+            color:#fff;
+            @include background-color(#000);
+          }
+        }
+      }
+
+    }
+  }
+  .detailinfo{
+    .page-block {
+      background-color: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      border-top: 1px solid #e0e0e0;
+      box-sizing: border-box;
+      margin-bottom: .5rem;
+      padding: 0 .2rem;
+      width: 100%;
+      .title {
+        border-bottom: 1px solid #e0e0e0;
+        color: #444;
+        font-size: .14rem;
+        line-height: .4rem;
+      }
+      .price-desc-detail {
+        color: #b0b0b0;
+        //font-size: .45rem;
+        //margin-top: .125rem;
+        //padding: .25rem 0;
+        .price-summary{
+          color: #333;
+          margin-top: .1rem;
+        }
+        .price-item-name {
+          color: #444;
+          font-size: .12rem;
+          line-height: 2;
+          padding-bottom: 0;
+          .p {
+            line-height: 1.45;
+            padding: .1rem 0;
+          }
+        }
+        .font{
+          font-size: .12rem;
+          line-height: 1.2;
+          color: #b0b0b0;
+        }
+      }
+    }
+  }
+}
+.black{
+  background-color: black;
+  border: none;
+  /*outline: none;*/
+}
+.gray{
+  border: none;
+  background-color: #979ba3;
+}
+.slide-enter {
+  transform: translateX(100%);
+}
+.slide-enter-active {
+  transition: all 0.4s;
+}
+.slide-enter-to {
+  transform: translateX(0);
+}

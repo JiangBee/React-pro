@@ -1,0 +1,40 @@
+@import '@/qunar/reset.scss';
+
+.movieList{
+  @include rect(100%, auto);//width:100%,height:auto
+  @include flexbox();
+  @include justify-content(space-around);
+  @include flex-direction();
+  @include flex-wrap(wrap);
+
+  a{
+    @include rect(45%, auto);
+    @include flexbox();
+    @include justify-content();
+    @include align-items();
+    @include border(1px, #ddd, solid);
+    @include margin();
+    padding-top: 0.06rem;
+    border-radius: .1rem;
+
+    .goodsimg{
+      @include padding(0.05rem);
+      @include justify-content();
+      @include align-items();
+      @include rect(100%, auto);
+      text-align: center;
+      h4{
+        @include rect(100%, 1.52rem);
+        @include overflow();
+        border-radius: .03rem;
+        img{
+          @include rect(100%, auto);
+          border-radius: .03rem;
+        }
+      }
+      .fa-cny{
+        color: #cccccc;
+      }
+    }
+  }
+}

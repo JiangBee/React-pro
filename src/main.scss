@@ -1,0 +1,51 @@
+@import '@/qunar/reset.scss';
+html, body, #root, .box{
+  position: relative;
+  @include rect(100%, 100%);
+}
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  font-size: .3rem;
+}
+a{
+  color: #333;}
+.box{
+  @include flexbox();
+  @include flex-direction(column);
+  .header{
+    @include rect(100%,.44rem);
+    //background-color: rgba(99,cc,cc,.3);
+    @include background-color(#acc);
+  }
+  .content{
+    @include flex();
+    @include rect(100%,auto);
+    @include overflow();
+  }
+  .footer{
+    @include rect(100%,.5rem);
+    background-color: rgba(66,99,99,.1);
+    ul{
+      @include rect(100%,100%);
+      @include flexbox();
+      a{
+        @include flex();
+        @include rect(auto,100%);
+        @include flexbox();
+        @include flex-direction(column);
+        @include justify-content();
+        @include align-items();
+        @include font-size(.12rem);
+        @include color(#666);
+        &.active{
+          @include color(#000);
+      }
+      }
+    }
+  }
+}
+
