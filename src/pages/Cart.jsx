@@ -6,7 +6,8 @@ class Com extends React.Component {
   constructor (props){
     super(props);
     this.state = {
-      goodlist: []
+      goodlist: [],
+      sum_price: 0
     }
   }
   componentDidMount() {
@@ -14,42 +15,173 @@ class Com extends React.Component {
     this.setState({
       goodlist: goodlist
     });
-    console.log(goodlist);
-    let content =Array.from(document.getElementsByClassName('cart'))[0];
-    console.log(content);
-    // var html ='';
-    // goodlist.forEach(item => {
-    //    html  =`
-    //   <li>
-    //     <div class="cartleft">
-    //       <input type="checkbox" class="choose"/>
-    //       <p>
-    //         <img src="${item.imgUrl}" />
-    //       </p>
-    //     </div>
-    //     <div class="cartright">
-    //       <h3>${item.productName}</h3>
-    //       <div>
-    //         <p>￥:${item.price}</p>
-    //         <div class="right">
-    //           <button>-</button><input type="text" value="${item.count}"/><button>+</button><button class="fa fa-trash-o"></button>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </li>
-    //   `;
-    //   content.appendChild(html);
-    // });
-    // content.appendChild(html);
+  }
+
+  //增操作
+  add = (e,id) => {
+    this.setState({
+      goodlist: this.state.goodlist.map((item, index) => {
+        if (item.productId === id) {
+          item.count = item.count*1 + 1;
+          return item
+        } else {
+          return item
+        }
+      })
+    })
+    this.SumPrice()
+    apiCookie.setCookie('goodlist', JSON.stringify(this.state.goodlist),1);
+  }
+
+  //减操作
+  reduce = (e,id) => {
+    this.setState({
+      goodlist: this.state.goodlist.map((item, index) => {
+        if(item.productId === id) {
+          item.count = item.count *1 - 1;
+          return item;
+        } else {
+          return item
+        }
+      })
+    })
+    this.SumPrice();
+    apiCookie.setCookie('goodlist', JSON.stringify((this.state.goodlist)));
+  }
+
+  //删除操作
+  // deleteGoods = (e,id) => {
+  //   console.log(id);
+  //   this.setState({
+  //     goodlist: this.state.goodlist.filter((item, index) => {
+  //       if (item.productId !== id) {
+  //         console.log(item.productId)
+  //         return true
+  //       } else {
+  //         return false
+  //       }
+  //     })
+  //   })
+  //   console.log(this.state.goodlist);
+  //   setTimeout(() => {
+  //     this.SumPrice();
+  //   })
+  //   apiCookie.setCookie('goodlist', JSON.stringify(this.state.goodlist), 10)
+  // }
+
+  //删除操作
+  deleteGoods = (e,id) => {
+    console.log(id);
+    this.setState({
+      goodlist: this.state.goodlist.filter((item, index) => {
+        if (item.productId !== id) {
+          this.state.goodlist.splice(index,1);
+          return item;
+        } else {
+          return item;
+        }
+      })
+    })
+    setTimeout(() => {
+      this.SumPrice();
+    })
+    apiCookie.setCookie('goodlist', JSON.stringify(this.state.goodlist), 10)
+  }
+
+  //实现全选与反选的操作
+  CheckAllorNoAll=(e,id)=>{
+    this.setState({
+      goodlist:this.state.goodlist.map((item,index)=>{
+        if(item.productId === id){
+          item.checked=!item.checked
+        }
+        return item
+      })
+    })
+    var flag=this.state.goodlist.every((item,index)=>{
+      if(item.checked===false){
+        return false
+      }else {
+        return true
+      }
+    })
+    if(flag===true){
+      this.refs.checkALL.checked=true
+    }else {
+      this.refs.checkALL.checked=false
+    }
+    this.SumPrice()
+  }
+
+  //判断全选状态
+  CheckedAll = (e) => {
+    if (e.target.checked === true) {
+      this.setState({
+        goodlist: this.state.goodlist.map((item, index) => {
+          item.checked = true;
+          return item;
+        })
+      })
+    } else if (e.target.checked === false) {
+      this.setState({
+        goodlist: this.state.goodlist.map((item, index) => {
+          item.checked =false;
+          return item
+        })
+      })
+    }
+    this.SumPrice()
+  }
+
+  //计算总价
+  SumPrice = () => {
+    var sum = 0;
+    this.state.goodlist.forEach((item, index) => {
+      if (item.checked === true) {
+        sum += item.count * item.price;
+      }
+    })
+    this.setState({
+      sum_price: sum
+    })
+  }
+  // 改变文本框的值
+  getInputText = (e, id) => {
+    this.setState({
+      goodlist: this.state.goodlist.map((item, index) => {
+        if(item.productId === id){
+          item.count = e.target.value
+          return item
+        } else {
+          return item
+        }
+      })
+    })
+    this.SumPrice()
+  }
+
+  settleAccounts = () => {
+    let shopping = [];
+    this.state.goodlist.forEach((item, index) => {
+      if (item.checked === true) {
+        shopping.push(item);
+      }
+    })
+    console.log(shopping);
+    window.localStorage.setItem("shopping", JSON.stringify(shopping))
+    window.localStorage.setItem("sumprice", JSON.stringify(this.state.sum_price));
+    this.props.history.push("/home");
   }
 
   render () {
     let html =[];
     this.state.goodlist.map((item, index) => {
       html.push(
-        <li>
+        <li key={index}>
           <div className="cartleft" key={index}>
-            <input type="checkbox" className="choose"/>
+            <input type="checkbox" className="choose" checked={item.checked} onChange={
+              (e) => {this.CheckAllorNoAll(e,item.productId)}
+            }/>
             <p>
               <img src={item.imgUrl} alt="index"/>
             </p>
@@ -59,7 +191,27 @@ class Com extends React.Component {
             <div>
               <p>￥:{item.price}</p>
               <div className="right">
-                <button>-</button><input type="text" value={item.count}/><button>+</button><button className="fa fa-trash-o"></button>
+                <button onClick={
+                  (e) => {
+                    this.reduce(e,item.productId)
+                  }
+                }>-</button>
+                <input type="text" value={item.count} onChange={
+                  (e) => {
+                    this.getInputText(e,item.productId)
+                  }
+                }/>
+                <button onClick={
+                  (e) => {
+                    this.add(e, item.productId)
+                  }
+                }>+</button>
+                <button className="fa fa-trash-o" onClick={
+                  (e) => {
+                    this.deleteGoods(e, item.productId)
+                  }
+                  // this.deleteGoods.bind(this,item.productId)
+                }></button>
               </div>
             </div>
           </div>
@@ -67,7 +219,7 @@ class Com extends React.Component {
       )
     })
     return (
-      <div className="box">
+      <div className="cartbox">
         <header className="header cartheader">
           <Back props={this.props}></Back>
           <p>购物车</p>
@@ -78,7 +230,20 @@ class Com extends React.Component {
             { html }
           </ul>
         </div>
-        <footer className="footer"></footer>
+        <div className="cartbottom">
+          <h5>
+            <input type="checkbox" ref="checkALL" onChange={
+              (e)=>{
+                this.CheckedAll(e)
+              }
+            }/>全选</h5>
+          <p>合计: {this.state.sum_price}</p>
+          <button onClick={ () => {
+            this.settleAccounts()
+          }}>
+            提交订单
+          </button>
+        </div>
       </div>
     )
   }

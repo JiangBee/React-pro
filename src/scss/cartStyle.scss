@@ -79,3 +79,22 @@
     }
   }
 }
+.cartbottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  @include rect(100%, .4rem);
+  background-color: #ccc;
+  @include flexbox();
+  @include justify-content(space-around);
+  @include align-items(center);
+  h5{
+    input{}
+  }
+  p{
+    width: 1.5rem;
+  }
+  button{
+    background-color: #ccc;
+  }
+}
