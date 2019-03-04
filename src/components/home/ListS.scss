@@ -1,0 +1,51 @@
+@import '@/qunar/reset.scss';
+
+.move{
+  background: #fff;
+  .moveList{
+    @include rect(auto, auto);
+    @include flexbox();
+    @include flex-direction();
+    @include flex-wrap();
+    @include overflow();
+    a {
+      display: block;
+      @include rect(2rem, auto);
+      @include flexbox();
+      @include justify-content();
+      @include align-items();
+      @include margin();
+      padding-top: 0.06rem;
+      border-radius: .1rem;
+      color:#000;
+      .movegoods{
+        @include padding(0.05rem);
+        @include justify-content();
+        @include align-items();
+        @include rect(100%, auto);
+        text-align: center;
+        h4{
+          @include rect(100%, auto);
+          @include overflow();
+          border-radius: .03rem;
+          img{
+            @include rect(1.05rem, auto);
+            border-radius: .03rem;
+            border: 1px solid #ccc;
+          }
+        }
+        p {
+          width:1.05rem;
+          margin-top: .05rem;
+          white-space:nowrap;
+          overflow:hidden;
+          text-overflow:ellipsis;
+        }
+        span {
+          font-size: .12rem;
+          margin-left:.1rem;
+         }
+      }
+    }
+  }
+}

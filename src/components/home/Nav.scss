@@ -1,0 +1,31 @@
+@import '@/qunar/reset.scss';
+
+nav {
+  box-sizing: content-box;
+  @include rect(100%, 0.76rem);
+  padding-top: .15rem;
+  background: #fff;
+  ul {
+    @include rect(100%, 0.76rem);
+    @include flexbox();
+    @include justify-content(space-around);
+    li {
+    @include rect(.94rem, 0.76rem);
+    font-size: .12rem;
+    text-align: center;
+      a {
+        display: block;
+        @include rect(.4rem, 0.4rem); 
+        margin:0 auto;
+        margin-bottom: .08rem;
+        img {
+          @include rect(.4rem, 0.4rem);
+          border-radius: 50%;
+          border: .01rem solid #999;
+        }
+      }
+    }
+  }
+}
+
+

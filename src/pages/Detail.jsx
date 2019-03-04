@@ -3,22 +3,27 @@ import api from '@/api/detail/index.js';
 import Hapi from '@/api/Huan/index.js';
 import apiCookie from '@/api/goods/Cookie.js';
 import Yapi from '@/api/Yu/index.js';
+import cartApi from '@/api/cart/index.js';
 import Back from '@/components/back/back.jsx';
 import '@/scss/detailStyle.scss'
 class Com extends React.Component {
   constructor (props) {
     super(props);
     this.state ={
+      goodlist: [],
       imgUrl: '',
       brand: '',
       price: '',
       productName: '',
       productId: '',
+      userid: 18895379822
     };
   }
+
   //根据返回的id进行请求数据
   componentDidMount () {
     const id = this.props.match.params.id + '';
+    console.log(id)
     // console.log(id);
     // let id= 3741065 + '';
     // let id= 16132 +'';
@@ -39,7 +44,6 @@ class Com extends React.Component {
     } else if (id.length === 7) {
       api.requestDetailData(id).then(data => {
         let detaildata = data.data.data[0];
-        console.log(detaildata);
         this.setState({
           imgUrl: detaildata.imgUrl,
           brand: detaildata.brand,
@@ -64,13 +68,29 @@ class Com extends React.Component {
         }
       })
     }
+
+    //请求服务端数据
+    cartApi.requestGoodsData(this.state.userid,this.state.goodlist).then(data => {
+      // console.log(data[0].goodlist)
+      if (data[0].goodlist === null) {
+        console.log(1)
+        this.setState({
+          goodlist: []
+          // goodlist: data.goodlist
+        })
+      } else {
+        this.setState({
+          goodlist: JSON.parse(data[0].goodlist)
+          // goodlist: data.goodlist
+        })
+      }
+
+      apiCookie.setCookie('goodslist',data[0].goodlist,10);
+     // console.log( apiCookie.getCookie('goodslist'))
+    })
+
   }
 
-  //返回
-  // goback () {
-  //   console.log(this);
-  //   // this.props.history.go(-1);
-  // }
   //  加入购物车操作
   joinCart (e) {
     if (e.cancelable) {
@@ -88,31 +108,49 @@ class Com extends React.Component {
         'count': 1,
         'flag': false
       };
-      let goodlist = [];
+      var goodslist = [];
       var flag = true;
-      if (apiCookie.getCookie('goodlist')) {
-        goodlist = JSON.parse(apiCookie.getCookie('goodlist'));
-        for ( var i in goodlist) {
-          if (goodlist[i].productId === goodsobj.productId) {
-            goodlist[i].count = Number(goodlist[i].count);
-            goodlist[i].count ++;
+      if (apiCookie.getCookie('goodslist') !== 'null') {
+        goodslist = JSON.parse(apiCookie.getCookie('goodslist'));
+        for ( var i in goodslist) {
+          if (goodslist[i].productId === goodsobj.productId) {
+            goodslist[i].count = Number(goodslist[i].count);
+            goodslist[i].count ++;
             flag=false;
           }
         }
         if (flag) {
-          goodlist.push(goodsobj);
+          if (goodslist === null) {
+            goodslist=[];
+          }
+          goodslist.push(goodsobj);
+          this.setState({
+            goodlist: this.state.goodlist.push(goodsobj)
+          })
         }
       } else {
-        goodlist.push(goodsobj)
+        this.setState({
+          goodlist: this.state.goodlist.push(goodsobj)
+        })
+        goodslist.push(goodsobj)
       }
-      console.log(goodlist);
-      apiCookie.setCookie('goodlist', JSON.stringify(goodlist), 10)
+      apiCookie.setCookie('goodslist', JSON.stringify(goodslist), 10)
+
+      //更新服务器数据
+      cartApi.responseGoodsData(this.state.userid,JSON.stringify(goodslist)).then( data => {
+        console.log(data);
+      })
+
+      //测试数据
+      cartApi.requestGoodsData(this.state.userid,this.state.goodlist).then(data => {
+        console.log(data);
+      })
+
     } else {
       // /userapp/register
       this.props.history.push("/userapp/register");
     }
   }
-
 
   goCart () {
     if (localStorage.getItem("isLogin") === 'ok') {
@@ -120,7 +158,6 @@ class Com extends React.Component {
     } else {
       this.props.history.push("/userapp/register");
     }
-    // console.log("go cart");
   }
   render () {
     return (

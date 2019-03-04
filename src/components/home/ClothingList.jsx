@@ -1,17 +1,14 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import './List.scss';
 
-const List =({list}) => {
+import './ListS.scss';
+
+
+const ClothingList =({list}) => {
   return (
-      <div className="listBox">
-        <h3>
-          <span className="iconfont icon-shangchuanxiangshangjiantou"></span>
-          你可能喜欢
-        </h3>
-        <ul className="movielist">
-        {
+    <div className="move">
+      <ul className="moveList">
+      {
         list.map((item, index) => {
           return (
           <Link to = { '/detail/' + item.productId } key = { index }>
@@ -24,11 +21,10 @@ const List =({list}) => {
             </div>
           </Link>)
         })
-        }
-        </ul>
-      </div>
+      }
+      </ul>
+    </div>
   )
 }
 
-
-export default List
+export default ClothingList

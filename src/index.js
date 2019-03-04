@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import App from './layout/App';
+import HomeApp from './layout/HomeApp.jsx';
 import UserApp from '@/layout/UserApp';
 import DetailApp from '@/layout/DetailApp';
 import CartApp from '@/layout/CartApp.jsx';
@@ -11,6 +12,7 @@ import './main.scss';
 ReactDOM.render(
   <Router>
     <Switch>
+      <Route path="/home" component = { HomeApp }></Route>
       <Route path="/cart" component = { CartApp }></Route>
       <Route path="/detail" component = { DetailApp } />
       <Route path="/userapp" component = { UserApp} />

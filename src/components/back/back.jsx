@@ -2,7 +2,7 @@ import React from 'react';
 import './buttonStyle.scss';
 class Back extends React.Component{
   goback () {
-    console.log(this.props);
+    // console.log(this.props);
     this.props.props.history.go(-1);
   }
 

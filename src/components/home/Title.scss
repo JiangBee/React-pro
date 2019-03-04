@@ -1,0 +1,21 @@
+@import '@/qunar/reset.scss';
+
+.title {
+  @include rect(100%, 0.34rem);
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items();
+  background: #fff;
+  padding: 0 .1rem;
+  margin-top:.1rem;
+  h3 {
+    @include rect(1rem, .34rem);
+    line-height: .34rem;
+    color: #333;
+
+  }
+  a {
+    color: #666;
+  }
+}
+

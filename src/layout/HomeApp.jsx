@@ -1,28 +1,19 @@
 import React from 'react';
 import {NavLink, Switch, Route, Redirect} from 'react-router-dom';
-// import Home from '@/pages/Home';
-import Kind from '@/pages/Kind';
-import User from '@/pages/User';
-import Search from '@/pages/Search';
+import Home from '@/pages/Home';
 
 class App extends React.Component {
   render () {
     return (
       <div className="box">
-        <header className="header">header</header>
+        {/*<header className="header">header</header>*/}
         <Switch>
-          {/*<Route path="/home" component = { Home }></Route>*/}
-          <Route path="/kind" component = { Kind }></Route>
-          <Route path="/user" component = { User }></Route>
-          <Route path="/search" component = { Search }></Route>
+          <Route path="/home" component = { Home }></Route>
           <Redirect path="/" to="/home"></Redirect>
         </Switch>
         <footer className="footer">
           <ul>
             <NavLink to="/home">
-              {/*<svg className="icon" aria-hidden="true">*/}
-                {/*<use xlinkHref="#icon-yidongdianyuan"></use>*/}
-              {/*</svg>*/}
               <span className="fa fa-home fa-lg"></span>
               首页
             </NavLink>

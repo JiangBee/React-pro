@@ -1,0 +1,8 @@
+@import '@/qunar/reset.scss';
+.ad {
+  margin-top:.15rem;
+  @include rect(100%, 1.18rem);
+  img{
+    @include rect(100%, 1.18rem);
+  }
+}
