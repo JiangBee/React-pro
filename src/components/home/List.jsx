@@ -10,7 +10,7 @@ const List =({list}) => {
           <span className="iconfont icon-shangchuanxiangshangjiantou"></span>
           你可能喜欢
         </h3>
-        <ul className="movielist">
+        <ul className="homeMovie">
         {
         list.map((item, index) => {
           return (

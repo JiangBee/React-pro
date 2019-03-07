@@ -5,7 +5,7 @@ import apiCookie from '@/api/goods/Cookie.js';
 import Yapi from '@/api/Yu/index.js';
 import cartApi from '@/api/cart/index.js';
 import Back from '@/components/back/back.jsx';
-import '@/scss/detailStyle.scss'
+import '@/scss/detailStyle.scss';
 class Com extends React.Component {
   constructor (props) {
     super(props);
@@ -16,23 +16,31 @@ class Com extends React.Component {
       price: '',
       productName: '',
       productId: '',
-      userid: 18895379822
+      // 18813007814
+      userid: '',
     };
+  }
+
+  //
+  componentWillMount() {
+    console.log(window.localStorage.getItem("userid"));
+    this.setState({
+      userid: window.localStorage.getItem("userid") *1
+    })
   }
 
   //根据返回的id进行请求数据
   componentDidMount () {
+    // console.log(window.localStorage.getItem("userid"));
+    // this.setState({
+    //   userid: window.localStorage.getItem("userid") *1
+    // })
     const id = this.props.match.params.id + '';
-    console.log(id)
-    // console.log(id);
-    // let id= 3741065 + '';
-    // let id= 16132 +'';
-    // let id = '5c6acdcabf8d150e2ca4997d';
     if (id.length === 5) {
       Hapi.requestDetailData(id).then(data => {
         console.log(data);
         let detaildata = data[0];
-        console.log(detaildata);
+        // console.log(detaildata);
         this.setState({
           imgUrl: detaildata.myimg,
           brand: detaildata.brand,
@@ -71,17 +79,15 @@ class Com extends React.Component {
 
     //请求服务端数据
     cartApi.requestGoodsData(this.state.userid,this.state.goodlist).then(data => {
-      // console.log(data[0].goodlist)
+      console.log(data[0].goodlist)
       if (data[0].goodlist === null) {
         console.log(1)
         this.setState({
           goodlist: []
-          // goodlist: data.goodlist
         })
       } else {
         this.setState({
           goodlist: JSON.parse(data[0].goodlist)
-          // goodlist: data.goodlist
         })
       }
 

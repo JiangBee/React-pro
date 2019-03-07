@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './ListS.scss';
+import './recommed.scss';
 
 const CosmeticsList =({list}) => {
   return (
-    <div className="move">
-      <ul className="moveList">
+    <div className="brandmove">
+      <ul className="brandmoveList">
       {
         list.map((item, index) => {
           return (
           <Link to = { '/detail/' + item.num } key = { index }>
-            <div className="movegoods">
+            <div className="brandmovegoods">
               <h4>
                 <img src = { item.myimg } alt={index}/>
               </h4>
@@ -24,6 +24,6 @@ const CosmeticsList =({list}) => {
       </ul>
     </div>
   )
-}
+};
 
 export default CosmeticsList

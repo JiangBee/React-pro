@@ -1,28 +1,39 @@
 @import '@/qunar/reset.scss';
 
+
+
 .listBox {
   background: #fff;
-  margin-top:.2rem;
+  margin-top:.1rem;
   border-top: 1px solid #ccc;
   padding: 0 .2rem;
-
-  h3 {
-    @include rect(100%, .68rem);
-    color: #999;
-    text-align: center;
-    line-height: .68rem;
-    font-size: .2rem;
-    span {
-      margin-right:.1rem;
+  .sort {
+    @include rect(100%, .45rem);
+    border-bottom: .01rem solid #ccc;
+    color:#999;
+    ul {
+      @include rect(100%, .45rem);
+      @include flexbox();
+      @include justify-content(space-around);
+      @include flex-direction();
+      @include align-items();
+      li {
+        i {
+          margin-left:.03rem;
+          font-size: .12rem;
+        }
+      }
+      
     }
   }
-  .homeMovie {
+ 
+  .movielist {
     @include rect(100%, auto);//width:100%,height:auto
     @include flexbox();
     @include justify-content(space-around);
     @include flex-direction();
     @include flex-wrap(wrap);
-
+  
     a {
       @include rect(45%, auto);
       @include flexbox();
@@ -44,12 +55,15 @@
         @include overflow();
         border-radius: .03rem;
           img{
-            @include rect(100%, auto);
+            @include rect(auto, 1.16rem);
             border-radius: .03rem;
           }
         }
         p{
           margin-top: .05rem;
+          white-space:nowrap;
+          overflow:hidden;
+          text-overflow:ellipsis;
         }
         span {
           margin-left: .1rem;
@@ -58,7 +72,7 @@
       .info {
         @include flex();
       }
-
+  
       @include border(0 0 1px 0, #ccc, solid); // 1px边框实现
     }
   }

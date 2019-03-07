@@ -1,0 +1,260 @@
+@import '@/qunar/reset.scss';
+
+
+.banner{
+    background-image: url(//cdn.yoho.cn/yohobuywap-node/img/header-bg.b98d69725a.jpg);
+    background-size: cover;
+    height: 1rem;
+    padding: .23rem .16rem;
+    position: relative;
+    width: 100%;
+    .login-go{
+        height:100%;
+        .left {
+            float: left;
+            margin-left: .1rem;
+            font: .14rem/.4rem "";
+            .user-avatar {
+                background-image: url(//cdn.yoho.cn/yohobuywap-node/img/user-avatar.c163d87b5d.png);
+                background-size: cover;
+                border: .01rem solid #fff;
+                border-radius: 50%;
+                height: .5rem;
+                overflow: hidden;
+                width: .5rem;
+            }
+        }
+      .right {
+            color: #fff;
+            float: left;
+            margin-left: .2rem;
+            font-size:.14rem;
+        }
+    }
+}
+.login-btn {
+    border: .01rem solid #fff;
+    color: #fff;
+    display: block;
+    font-size: .12rem;
+    height: .3rem;
+    line-height: .3rem;
+    margin: .09rem auto;
+    text-align: center;
+    width: 1rem;
+    display:none;
+}
+.login-center {
+    height: .3rem;
+    line-height: .3rem;
+    margin-left:.08rem;
+    width:.3rem;
+}
+.login-center:nth-child(1){
+    margin-left:.14rem,
+}
+.list1{
+    width:100%;
+    height:.4rem;
+    background-color:#fff;
+    font:.14rem/.4rem "";
+    border:.01rem solid #fff;
+    margin-bottom:.08rem;
+}
+.list2{
+    width:100%;
+    height:.4rem;
+    background-color:#fff;
+    font:.14rem/.4rem "";
+    border:.01rem solid #fff;
+    border-bottom:.01rem solid #ccc;
+}
+
+.left{
+    float:left;
+    margin-left:.2rem;
+    font:.14rem/.4rem "";
+}
+.right{
+    float:right;
+    font:.14rem/.4rem "";
+    // display:block;
+    height:.4rem;
+    color:#000;
+    margin-right:.2rem;
+}
+.span2{
+    float:right;
+    color:#444;
+    margin-left:.08rem;
+}
+.list3{
+
+    // @include rect(100%, 1.22rem);
+    // @include flexbox();
+    // @include flex-wrap(wrap);
+    width:100%;
+    height:1.22rem;
+    // @include align-items();
+    // -webkit-justify-content:center;
+    background:#fff;
+
+
+    li{
+        @include flex();
+        @include flexbox();
+        @include rect(100%, .6rem);
+        @include justify-content(space-between);
+        @include align-items();
+        div.item1 {
+            @include flex();
+            @include flexbox();
+            @include flex-direction(column);
+           p {
+                @include text-align(center);
+            }
+            span {
+                @include text-align(center);
+                @include color(#000);
+                display:block;
+                width:1.25rem;
+                margin-bottom:.04rem;
+                color:#444;
+            }
+        }
+    }
+    li:nth-child(1){
+         border-bottom:.01rem solid #ccc;
+    }
+
+
+}
+.list4{
+    width:100%;
+    height:.4rem;
+    background-color:#fff;
+    font:.14rem/.4rem "";
+    border:.01rem solid #fff;
+    margin-top:.16rem;
+    @include flexbox();
+    h3{
+        width:.4rem;
+        height:.4rem;
+        color:#000;
+        font:.4rem/.4rem "";
+    }
+    .list-right{
+        width:3.8rem;
+        float:left;
+    border-bottom:.01rem solid #ccc;
+    i{
+     float:left;
+    }
+    }
+    .span2{
+        float:right;
+    }
+}
+// .left1{
+//     float:right;
+//     // margin-left:.2rem;
+//     font:.14rem/.4rem "";
+//     width:80%;
+// }
+
+.list5{
+    @include flexbox();
+    width:100%;
+    height:.4rem;
+    background-color:#fff;
+    font:.14rem/.4rem "";
+    border:.01rem solid #fff;
+    h3{
+        width:.4rem;
+        height:.4rem;
+    }
+    .list-right{
+        width:3.8rem;
+    border-bottom:.01rem solid #ccc;
+    i{
+     float:left;
+      }
+    }
+    .span2{
+        float:right;
+    }
+}
+.banner-list{
+    width:100%;
+    height:1rem;
+    padding:0;
+    margin:.1rem auto;
+    img{
+        width:100%;
+        height:1rem;
+    }
+}
+h2{
+    height:.4rem;
+    font:.16rem/.4rem "";
+    padding-left:.12rem;
+    border-bottom:.01rem solid #ccc;
+    border-top:.01rem solid #ccc;
+}
+.help{
+    width:100%;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    border-bottom:.01rem solid #ccc;
+
+    a{
+        display:block;
+        width:50%;
+        height:1.8rem;
+        justify-content: center;
+        margin-top:.2rem;
+    }
+    img{
+        height:1.4rem;
+        width:80%;
+    }
+
+    .p1{
+        // width:50%;
+        height:.2rem;
+        overflow:hidden;
+        color:#000;
+        margin-left:.1rem;
+        font:.12rem/.2rem "";
+    }
+}
+.op-row{
+    width:100%;
+    height:.4rem;
+    color:#000;
+    a{
+        color:#000;
+        font:.14rem/.4rem "";
+        margin:0 .08rem;
+    }
+    .back-to-top{
+        float:right;
+        font:.14rem/.4rem "";
+        margin-right:.12rem;
+    }
+}
+.common-back {
+    // -webkit-background-size: cover;
+    background: url(//cdn.yoho.cn/yohobuywap-node/img/back-to-top.fcf6828d24.png) no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    // bottom: auto;
+    // display: none;
+    height: .4rem;
+    left: auto;
+    position: absolute;
+    right: .14rem;
+    bottom: .8rem;
+    width: .4rem;
+}

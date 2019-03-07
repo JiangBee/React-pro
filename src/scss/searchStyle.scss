@@ -1,0 +1,70 @@
+@import '@/qunar/reset.scss';
+.searchcontent {
+  @include overflow();
+
+  .searchheader{
+    @include rect(100%,.44rem);
+    padding: 0 .16rem;
+    @include flexbox();
+    line-height: .44rem;
+    font-size: .16rem;
+    background-color: #acc;
+    @include justify-content(space-between);
+  }
+  .center{
+    @include rect(100%,auto);
+    margin-bottom: 0;
+    i{
+      display: none;
+    }
+  }
+  .watchlist{
+    padding:.1rem;
+    background-color: #fff;
+    @include overflow();
+    @include flexbox();
+    @include flex-direction();
+    @include flex-flow(wrap);
+    @include rect(100%, auto);
+    border-bottom: .01rem dashed #f0f0f0;
+    span{
+      font-size: .14rem;
+      height: .32rem;
+      font-weight: bold;
+      line-height: .32rem;
+      margin-right: .1rem;
+    }
+    a{
+      display: inline-block;
+      padding: .03rem;
+      border-radius: 15%;
+      border: 1px transparent solid;
+      border: 1px solid #cc9e96;
+      margin: .03rem;
+    }
+  }
+  .clothlist{
+    padding:.1rem;
+    p{
+      font-weight: bold;
+    }
+    .kiki{
+      //padding:.1rem;
+      background-color: #fff;
+      @include overflow();
+      @include flexbox();
+      @include flex-direction();
+      @include flex-flow(wrap);
+      @include rect(100%, auto);
+      border-bottom: .01rem dashed #f0f0f0;
+      a{
+        display: inline-block;
+        margin: .03rem;
+        padding: .03rem;
+        border: 1px transparent solid;
+        border: 1px solid #cc9e96;
+        border-radius: 15%;
+      }
+    }
+  }
+}

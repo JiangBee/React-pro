@@ -1,14 +1,21 @@
 import React,{ Component } from 'react'
 import './Title.scss';
+// import { NavLink } from 'react-router-dom'
 class Title extends Component {
+  constructor (props) {
+    super(props)
+  }
+
   render () {
     return (
-      <div className = "title">
+      <div className = "titles1">
         <h3>
           <i className="iconfont icon-shugang"></i>
           {this.props.title.tlt}
         </h3>
-        <a href="" className="iconfont icon-xuanxiang"></a>
+        <a href={ this.props.title.url }>
+          <i className="iconfont icon-xuanxiang"></i>
+        </a>
       </div>
     )
   }

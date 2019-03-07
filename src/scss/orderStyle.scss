@@ -1,0 +1,138 @@
+@import '@/qunar/reset.scss';
+.ordercontent{
+  @include overflow();
+}
+.center{
+  //padding: .1rem .2rem;
+  background-color: #f0f0f0;
+  margin-bottom: .44rem;
+  .address{
+    padding: .1rem .2rem 0 .2rem;
+    @include rect(100%,.4rem);
+    background-color: #fff;
+    @include text-align();
+    @include flexbox();
+    line-height: .4rem;
+    @include justify-content(space-between);
+    .fa-angle-right{
+      font-size: .18rem;
+    }
+    span{
+      display: inline-block;
+      height: .4rem;
+      font-size: .16rem;
+      //line-height: .4rem;
+    }
+
+  }
+  .pay{
+    margin-top: .1rem;
+    padding: .1rem .2rem;
+    background-color: #fff;
+    ul{
+      @include flexbox();
+      @include flex-direction(column);
+      li{
+        @include rect(100%,.4rem);
+        @include flexbox();
+        @include justify-content(space-between);
+        font-size: .14rem;
+        line-height: .4rem;
+        border-bottom: .01rem solid #f0f0f0;
+      }
+    }
+  }
+  .goods{
+    background-color: #fff;
+    margin-top: .1rem;
+    padding: .1rem .2rem 0 .2rem;
+    ul{
+      li{
+        @include flexbox();
+        margin-top: .05rem;
+        border-bottom: .01rem solid #f0f0f0;
+        padding-bottom: .05rem;
+        p.img{
+          @include rect(.4rem,.4rem);
+          @include overflow();
+          margin-right: .1rem;
+          img{
+            display: inline-block;
+            @include rect(.4rem,auto);
+          }
+        }
+        div{
+          @include flexbox();
+          @include flex-direction(column);
+          @include justify-content(space-between);
+          overflow: hidden;
+          .productname{
+
+          }
+          .goodsinfo{
+            @include rect(100%,auto);
+            @include flexbox();
+            @include justify-content(space-between);
+            .count{
+              display: inline-block;
+              width: 1.2rem;
+            }
+            .money{
+              color: #666;
+              float: right;
+            }
+          }
+        }
+      }
+    }
+    h3{
+      @include rect(100%,auto);
+      text-align: right;
+      margin-right: .2rem;
+      padding: .1rem 0;
+    }
+  }
+  .costless{
+    margin-top: .1rem;
+    padding: .1rem .2rem;
+    background-color: #fff;
+    ul{
+      li{
+        @include flexbox();
+        //@include flex-direction(column);
+        @include justify-content(space-between);
+      }
+    }
+  }
+  .costmoney{
+    margin-top: .1rem;
+    padding: .1rem .2rem;
+    background-color: #fff;
+    ul{
+      li{
+        @include flexbox();
+        //@include flex-direction(column);
+        @include justify-content(space-between);
+      }
+    }
+  }
+}
+.orderbottom{
+  @include flexbox();
+  @include justify-content(space-between);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  @include rect(100%, .44rem);
+  background-color: #fff;
+  font-size: .18rem;
+  padding: 0 .2rem;
+  line-height: .4rem;
+  button{
+    width:.8rem;
+    color: #fff;
+    font-size: .14rem;
+    background-color: #d0021b;
+    border-radius: 5%;
+  }
+}

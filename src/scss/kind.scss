@@ -1,0 +1,129 @@
+@import '@/qunar/reset.scss';
+html {touch-action:none;}
+#kinB {
+  @include flexbox();
+  @include flex-direction(column);
+  background: #fff;
+  font-size: 12px;
+  .kindSearchbox{
+    position: relative;
+    height: .51rem;
+    .kindSearch {
+      width:100%;
+      padding: .08rem .12rem;
+      background: #f8f8f8;
+      position: fixed;
+      z-index: 6;
+      a {
+        display: block;
+        @include rect(100%, .35rem);
+        border-radius: .25rem;
+        @include flexbox();
+        @include flex-direction();
+        background: #fff;
+        color:#999;
+        @include align-items(); 
+        i {
+          margin:0 .1rem;
+        }
+        p {
+          @include flex(1);
+        }
+      }
+    }
+  }
+  .kindBox {
+    background: #fff;
+    @include rect(100%, .39rem);
+    position: relative;
+    .kindNav {
+      @include rect(100%, .39rem);
+      position: fixed;
+      z-index: 6;
+      background: #fff;
+      @include flexbox();
+      @include flex-direction();
+      @include justify-content(space-around);
+      border-bottom:1px solid #ccc;
+      li {
+        padding:.1rem 0;
+        width:33.3%;
+        text-align: center;
+        span {
+          display: block;
+          color: #999;
+        }
+        &.active {
+          background:#ccc;
+        }
+      }
+      li:nth-child(2) {
+        span {
+          @include border(0 1px, #ccc, solid); 
+        }
+      }
+    }
+  }
+  .kindContent{
+    @include flex();
+    @include rect(100%, 100%);
+    @include flexbox();
+    @include flex-direction();
+    // overflow: hidden;
+    background: #fff;
+    .kindBarbox {
+      position: relative;
+      width:30%;
+      .kindBar {
+        position: fixed;
+        z-index: 6;
+        width: 30%;
+        li {
+          height: .4rem;
+          text-align: center;
+          line-height: .4rem;
+          background: #f8f8f8;
+          &.active {
+            background: #fff;
+          }
+        }
+      }
+    }
+    
+    .kindList {
+      @include flex();
+      // height:100%;
+      // overflow: hidden;
+      // background: #fff;
+      a {
+        @include rect(100%, auto);
+        @include flexbox();
+        @include justify-content();
+        text-align: center;
+        color:#666;
+        margin-top:.1rem;
+        .movegoods {
+          @include rect(1.5rem, 100%);
+          padding-bottom: .1rem;
+          border-bottom: 1px dashed #ccc;
+          h4 {
+            img {
+              @include rect(auto, 1.3rem);
+            }
+          }
+          p {
+            margin-top: .05rem;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+          }
+          span {
+            font-size: 12px;
+            margin-left:.1rem;
+          }
+        }
+      }
+    }
+  }   
+}
+

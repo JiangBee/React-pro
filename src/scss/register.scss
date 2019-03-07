@@ -1,0 +1,55 @@
+@import '@/qunar/reset.scss';
+.top {
+    color: #444;
+   margin:0 .5rem;
+   margin-top:26px;
+    width:100%;
+}
+.page-title {
+    display: inline-block;
+    font-size: 0.2rem;
+    text-align: center;
+    margin-left:25%;
+    margin-top:.1rem;
+}
+#down{
+    color:#000;
+    border:none;
+}
+.am-input-label-5{
+    width:.9rem;
+}
+//.fa{
+//      font-size: none;
+//      width:.16rem;
+//}
+.am-list-item select{
+    background-color:none;
+    -webkit-appearance:checkbox;
+    float:left;
+
+}
+input[type=button]{
+	-webkit-appearance:none;
+	outline:none
+}
+.arrow-icon {
+    color: #444;
+    float: none;
+    font-size: .3rem;
+}
+.protocol{
+    width:100%;
+    margin:.1rem .4rem;
+}
+
+.a1{
+    display:inline-block;
+    color:red;
+    font:.12rem/.2rem "";
+    margin-right:.06rem;
+    border-bottom:.01rem solid red;
+}
+input{
+    border: none;
+}

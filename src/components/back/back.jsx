@@ -5,7 +5,6 @@ class Back extends React.Component{
     // console.log(this.props);
     this.props.props.history.go(-1);
   }
-
   render () {
     return (
       <button className="fa fa-reply fa-lg" onClick={this.goback.bind(this)}></button>

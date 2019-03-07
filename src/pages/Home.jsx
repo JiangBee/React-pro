@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
-import api from '../api/home';
+import api from '@/api/home/index.js';
 import Header from '@/components/home/Header.jsx';
-// import action from '@/store/home/action'
 import { Carousel } from 'antd-mobile';
-import CosmeticsList from '@/components/home/CosmeticsList.jsx'
-import ClothingList from '@/components/home/ClothingList.jsx'
-import LuxuryList from '@/components/home/LuxuryList.jsx'
-import Nav from '@/components/home/Nav.jsx'
-import Title from '@/components/home/Title.jsx'
-import List from '@/components/home/List.jsx'
-import  '@/components/home/Homeimg.scss';
+import 'antd-mobile/dist/antd-mobile.css';
+import CosmeticsList from '@/components/home/CosmeticsList.jsx';
+import ClothingList from '@/components/home/ClothingList.jsx';
+import LuxuryList from '@/components/home/LuxuryList.jsx';
+import Nav from '@/components/home/Nav.jsx';
+import Title from '@/components/home/Title.jsx';
+import List from '@/components/home/List.jsx';
 
 class Com extends Component {
   constructor (props) {
@@ -19,7 +17,7 @@ class Com extends Component {
       list: [],
       bannerdata: [],
       imgHeight: 200,
-      title: [{'tlt': '丽人专区'}, {'tlt': '服装专区'}, {'tlt': '轻奢专区'}],
+      title: [{'tlt': '丽人专区', 'url': '/#/division/cosmetics'}, {'tlt': '服装专区', 'url': '/#/division/clothing'}, {'tlt': '轻奢专区', 'url': '/#/division/luxury'}],
       cosmeticsList: [],
       clothingList: [],
       luxuryList: []
@@ -33,7 +31,7 @@ class Com extends Component {
       })
     });
     api.requestBannerData().then(data => {
-      // console.log(data)
+      console.log(data);
       this.setState({
         bannerdata: data
       })
@@ -68,7 +66,6 @@ class Com extends Component {
             {this.state.bannerdata.map((item, index) => (
               <a
                 key={index}
-                // href="#"
                 style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
               >
                 <img
@@ -93,15 +90,11 @@ class Com extends Component {
           </div>
           <Title title= { this.state.title[2] }/>
           <LuxuryList list = { this.state.luxuryList }/>
-
           <Title title= { this.state.title[1] }/>
           <ClothingList list = { this.state.clothingList }/>
-
           <Title title= { this.state.title[0] }/>
           <CosmeticsList list = { this.state.cosmeticsList }/>
-
           <List list = { this.state.list }/>
-
         </div>
       </div>
     )

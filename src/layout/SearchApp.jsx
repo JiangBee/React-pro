@@ -1,27 +1,19 @@
 import React from 'react';
-import {NavLink, Switch, Route, Redirect} from 'react-router-dom';
-// import Home from '@/pages/Home';
-import Kind from '@/pages/Kind';
-import User from '@/pages/User';
-import Back from '@/components/back/back.jsx';
+import {NavLink, Switch, Route} from 'react-router-dom';
+import Search from '@/pages/Search';
+import Brand from '@/pages/Brand.jsx';
 class App extends React.Component {
   constructor (props) {
     super(props);
   }
 
-  //验证登录
-
   render () {
     return (
       <div className="box">
-        <header className="header">
-          <Back props={this.props}></Back>
-          <span className="iconfont icon-xuanxiang3"></span>
-        </header>
         <Switch>
-          <Route path="/kind" component = { Kind }></Route>
-          <Route path="/user" component = { User }></Route>
-          <Redirect path="/" to="/home"></Redirect>
+          <Route path="/search/brand/:id" component = { Brand }></Route>
+          <Route path="/search" component = { Search }></Route>
+
         </Switch>
         <footer className="footer">
           <ul>

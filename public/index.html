@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="referrer" content="never">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1051673_o5ipup8dfzo.css">
-    <meta name="referrer" content="no-referrer"></meta>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1051673_uj9flxdkdp.css">
+    <meta name="referrer" content="no-referrer"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -27,6 +28,19 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <!-- 移动端点击事件 fastclick  -->
+    <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+    <script>
+      if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body);
+        }, false);
+      }
+      if(!window.Promise) {
+        document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+
+          '>'+'<'+'/'+'script>');
+      }
+    </script>
     <script src="iconfont.js"></script>
     <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
     <script>

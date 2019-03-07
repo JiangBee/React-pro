@@ -10,11 +10,10 @@ class Com extends React.Component {
   constructor (props){
     super(props);
     this.state = {
-      goodfalselist: '',
       goodtruelist: [],
       goodlist: [],
       sum_price: 0,
-      userid: 18895379822,
+      userid: '',
       recommedlist: [
         {
           '_id': '5c6d5420657b5c76b27f3e6c',
@@ -85,9 +84,16 @@ class Com extends React.Component {
       ]
     }
   }
+  componentWillMount() {
+    console.log(window.localStorage.getItem("userid"));
+    this.setState({
+      userid: window.localStorage.getItem("userid")
+    })
+  }
+
   componentDidMount() {
-    cartApi.requestGoodsData(this.state.userid,this.state.goodfalselist).then(data => {
-      // console.log(data[0])
+    cartApi.requestGoodsData(this.state.userid,'').then(data => {
+      console.log(data[0])
       this.setState({
         goodlist:JSON.parse( data[0].goodlist)
       })
@@ -100,10 +106,11 @@ class Com extends React.Component {
     });
 
     //
-    setTimeout(() => {
-      Toast.hide();
-    }, 1000);
+    // setTimeout(() => {
+    //   Toast.hide();
+    // }, 1000);
   }
+
 
   //增操作
   add = (e,id) => {
@@ -170,7 +177,7 @@ class Com extends React.Component {
     setTimeout(() => {
       this.SumPrice();
     })
-    // apiCookie.setCookie('goodlist', JSON.stringify(this.state.goodlist), 10)
+    apiCookie.setCookie('goodlist', JSON.stringify(this.state.goodlist), 10)
     cartApi.responseGoodsData(this.state.userid,JSON.stringify(this.state.goodlist))
       .then(data => {
         console.log(data)
@@ -269,7 +276,7 @@ class Com extends React.Component {
     window.localStorage.setItem("shopping", JSON.stringify(shopping))
     window.localStorage.setItem("sumprice", JSON.stringify(this.state.sum_price));
     if(this.state.sum_price !== 0) {
-      this.props.history.push("/home");
+      this.props.history.push("/order");
     }
   }
 
@@ -281,7 +288,7 @@ class Com extends React.Component {
     //商品列表
     if (this.state.goodlist === null) {
       html.push(
-        <h2>hahahh</h2>
+        <h2 className="showNothing">赶紧选购吧！！</h2>
       )
     } else {
       this.state.goodlist.map((item, index) => {
@@ -302,7 +309,8 @@ class Com extends React.Component {
                 <div className="right">
                   <button onClick={
                     (e) => {
-                      this.reduce(e,item.productId)
+                      this.reduce(e,item.productId);
+                      // this.failToast()
                     }
                   } >-</button>
                   <input type="text" value={item.count} onChange={
@@ -312,8 +320,7 @@ class Com extends React.Component {
                   }/>
                   <button onClick={
                     (e) => {
-                      this.add(e, item.productId);
-                      this.failToast()
+                      this.add(e, item.productId)
                     }
                   }>+</button>
                   <button className="fa fa-trash-o" onClick={
@@ -327,7 +334,9 @@ class Com extends React.Component {
             </div>
           </li>
         )
+        return ''
       })
+
     }
 
     // 推荐列表
@@ -341,6 +350,7 @@ class Com extends React.Component {
             </div>
           </Link>
       )
+      return ''
     })
 
     return (
@@ -353,7 +363,6 @@ class Com extends React.Component {
         <div className="content cartcontent">
           <ul className="cart">
             {html}
-            {/*{this.state.goodlist.length > 0 ? {html}:{cartNone}}*/}
           </ul>
           <div className="cartbottom">
             <h5>
@@ -362,7 +371,7 @@ class Com extends React.Component {
                   this.CheckedAll(e)
                 }
               }/>全选</h5>
-            <p>合计: {this.state.sum_price}</p>
+            <p>合计:￥: {this.state.sum_price}</p>
             <button onClick={ () => {
               this.settleAccounts()
             }}>

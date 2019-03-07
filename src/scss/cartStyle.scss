@@ -69,7 +69,7 @@
           .right{
             button{
               margin:0 .05rem;
-              background-color: #fff;
+              //background-color: #fff;
               font-size: .2rem;
               line-height: .24rem;
               border: none;
@@ -77,10 +77,10 @@
             input{
               margin-left: .05rem;
               width: .3rem;
-              background-color: #fff;
+              height: .37rem;
+              //background-color: #fff;
               font-size: .14rem;
               text-align: center;
-              border: none;
               border: none;
             }
           }
@@ -95,7 +95,7 @@
   bottom: 0;
   left: 0;
   @include rect(100%, .4rem);
-  background-color: #ccc;
+  background-color: #f0f0f0;
   @include flexbox();
   @include justify-content(space-around);
   @include align-items(center);
@@ -106,7 +106,8 @@
     width: 1.5rem;
   }
   button{
-    background-color: #ccc;
+    width: auto;
+    background-color: #f0f0f0;
     border: none;
   }
 }
@@ -119,4 +120,8 @@
     border-bottom: 1px dashed #ccc;
     font-weight: 300;
   }
+}
+.showNothing{
+  @include rect(100%,auto);
+  @include text-align(center);
 }

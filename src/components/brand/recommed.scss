@@ -1,0 +1,87 @@
+@import '@/qunar/reset.scss';
+
+.brandmove{
+  background: #fff;
+  .brandmoveList{
+    @include rect(100%, auto);
+    @include flexbox();
+    @include flex-direction();
+    @include flex-wrap(wrap);
+    @include justify-content(space-around);
+    @include overflow();
+    a {
+      display: block;
+      @include rect(45%, auto);
+      @include flexbox();
+      @include justify-content();
+      @include align-items();
+      @include margin();
+      padding-top: 0.06rem;
+      border-radius: .1rem;
+      color:#000;
+      .brandmovegoods{
+        @include padding(0.05rem);
+        @include justify-content();
+        @include align-items();
+        @include rect(100%, auto);
+        text-align: center;
+        h4{
+          @include rect(100%, 1.05rem);
+          @include overflow();
+          border-radius: .03rem;
+          img{
+            @include rect(1.05rem, auto);
+            border-radius: .03rem;
+            border: 1px solid #ccc;
+          }
+        }
+        p {
+          width:1.6rem;
+          margin-top: .05rem;
+          white-space:nowrap;
+          overflow:hidden;
+          @include text-align();
+          text-overflow:ellipsis;
+        }
+        span {
+          font-size: .12rem;
+          margin-left:.1rem;
+         }
+      }
+    }
+  }
+}
+
+.recommedtitle{
+  @include rect(3rem,auto);
+  margin: 0 auto;
+  margin-top: .2rem;
+  @include text-align();
+  padding: .1rem;
+  border-bottom: 1px dashed #ccc;
+  border-top: 1px dashed #ccc;
+}
+
+.brandtoptitle{
+  @include rect(100%, auto);
+  position: absolute;
+  top: .44rem;
+  left: 0;
+  ul{
+    @include rect(100%, auto);
+    @include flexbox();
+    padding: .05rem .1rem;
+    background-color: #f5f5f9;
+    @include justify-content(space-around);
+    li{}
+  }
+}
+
+.brandheader {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.goodstop{
+  margin-top: .748rem;
+}

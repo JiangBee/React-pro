@@ -3,6 +3,8 @@ html, body, #root, .box{
   position: relative;
   @include rect(100%, 100%);
   touch-action: none;
+  background-color: #fff;
+  font-family: Helvetica Neue;
 }
 .icon {
   width: 1em;
@@ -47,6 +49,13 @@ a{
       }
       }
     }
+  }
+}
+
+.ad{
+  img{
+    @include rect(100%,auto);
+    margin-top: .1rem;
   }
 }
 
