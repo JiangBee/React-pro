@@ -31,7 +31,7 @@ class Com extends Component {
       })
     });
     api.requestBannerData().then(data => {
-      console.log(data);
+      // console.log(data);
       this.setState({
         bannerdata: data
       })

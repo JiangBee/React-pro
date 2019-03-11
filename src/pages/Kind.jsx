@@ -49,25 +49,25 @@ class Com extends Component {
         listclo: data
       })
     })
-  }
+  };
   //奢侈品
   kindLux = (e) => {
     this.setState({
       num: parseInt(e.currentTarget.getAttribute('index'), 10)
-    })
+    });
     this.val = e.target.innerText;
     api.requestLuxSort(this.val).then(data => {
       this.setState({
         listlux: data
       })
     })
-  }
+  };
   //护肤品
   btnkind = (e) => {
     this.setState({
       num: parseInt(e.currentTarget.getAttribute('index'), 10)
-    })
-    this.val = e.target.innerText
+    });
+    this.val = e.target.innerText;
     api.requestCosSort(this.val).then(data => {
       this.setState({
         listcos: data
@@ -196,7 +196,7 @@ class Com extends Component {
       <div className="content" id="kinB">
         <div className="kindSearchbox">
           <div className="kindSearch">
-            <a href="">
+            <a href="/#/search">
               <i className="iconfont icon-search"></i>
               <p>搜索商品</p>
             </a>

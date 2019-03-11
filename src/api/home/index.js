@@ -16,7 +16,7 @@ const api = {
     return new Promise ((resolve, reject) => {
       axios.get( 'http://47.102.124.49:3000/api/slideshow')
       .then(data => {
-        console.log(data.data.data);
+        // console.log(data.data.data);
         resolve(data.data.data)
       })
       .catch(err => {

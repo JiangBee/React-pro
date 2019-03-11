@@ -91,7 +91,7 @@ class Com extends Component {
             <div className="top-operation-bar">
                 {/*<button  className="fa fa-chevron-circle-left fa-2x" onclick="javascript:window.location='/home'" type="button"></button>*/}
               <Back props={this.props}></Back>
-                <a href="/#/registerapp/register" className="register">注册</a>
+                <a href="/#/userapp/register" className="register">注册</a>
             </div>
             <div className="tip">Yoho!Family账号可登录Yoho!Buy有货？</div>
         </div>

@@ -85,7 +85,7 @@ class Com extends React.Component {
     }
   }
   componentWillMount() {
-    console.log(window.localStorage.getItem("userid"));
+    // console.log(window.localStorage.getItem("userid"));
     this.setState({
       userid: window.localStorage.getItem("userid")
     })
@@ -93,7 +93,7 @@ class Com extends React.Component {
 
   componentDidMount() {
     cartApi.requestGoodsData(this.state.userid,'').then(data => {
-      console.log(data[0])
+      // console.log(data[0])
       this.setState({
         goodlist:JSON.parse( data[0].goodlist)
       })
@@ -163,7 +163,7 @@ class Com extends React.Component {
   //删除操作
   deleteGoods = (e,id) => {
     e.preventDefault();
-    console.log(id);
+    // console.log(id);
     this.setState({
       goodlist: this.state.goodlist.filter((item, index) => {
         if (item.productId !== id) {
@@ -268,10 +268,10 @@ class Com extends React.Component {
     })
 
     //用户点击提交时, 将本地存储的商品列表信息进行存储，
-    let goodtruelist = JSON.parse(apiCookie.getCookie('goodlist'));
-    console.log(goodtruelist);
+    // let goodtruelist = JSON.parse(apiCookie.getCookie('goodlist'));
+    // console.log(goodtruelist);
     // cartApi.responseGoodsData()
-    console.log(shopping);
+    // console.log(shopping);
 
     window.localStorage.setItem("shopping", JSON.stringify(shopping))
     window.localStorage.setItem("sumprice", JSON.stringify(this.state.sum_price));

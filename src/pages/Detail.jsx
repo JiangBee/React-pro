@@ -23,7 +23,7 @@ class Com extends React.Component {
 
   //
   componentWillMount() {
-    console.log(window.localStorage.getItem("userid"));
+    // console.log(window.localStorage.getItem("userid"));
     this.setState({
       userid: window.localStorage.getItem("userid") *1
     })
@@ -79,7 +79,7 @@ class Com extends React.Component {
 
     //请求服务端数据
     cartApi.requestGoodsData(this.state.userid,this.state.goodlist).then(data => {
-      console.log(data[0].goodlist)
+      // console.log(data[0].goodlist)
       if (data[0].goodlist === null) {
         console.log(1)
         this.setState({
@@ -177,7 +177,7 @@ class Com extends React.Component {
           <div className="goodsdetail">
             <p><img src={this.state.imgUrl} alt={this.state.productName}/></p>
             <h2>
-              <span>想去 · 买得起的好设计</span>
+              <span>Yohou · 买得起的好设计</span>
             </h2>
             <h3>好物&nbsp;·&nbsp;{ this.state.productName }</h3>
             <h4>
