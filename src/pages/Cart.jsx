@@ -281,7 +281,6 @@ class Com extends React.Component {
   }
 
   render () {
-    // let cart =[];
     let recommedlist = [];
     let html =[];
 

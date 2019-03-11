@@ -6,6 +6,7 @@ import Yapi from '@/api/Yu/index.js';
 import cartApi from '@/api/cart/index.js';
 import Back from '@/components/back/back.jsx';
 import '@/scss/detailStyle.scss';
+import { Toast } from 'antd-mobile';
 class Com extends React.Component {
   constructor (props) {
     super(props);
@@ -124,6 +125,7 @@ class Com extends React.Component {
             goodslist[i].count ++;
             flag=false;
           }
+          Toast.info('加入购物车成功！', 1);
         }
         if (flag) {
           if (goodslist === null) {

@@ -136,8 +136,6 @@ class Com extends Component {
             <a className="a1" href="/service/qaDetail?keyword=服务条款&amp;sonId=340&amp;parentId=250" title="有货用户服务协议" target="_blank">有货用户服务协议</a>
             <a className="a1" href="/service/qaDetail?keyword=隐私条款&amp;sonId=352&amp;parentId=250" title="Yoho!Buy有货隐私政策" target="_blank">有货隐私条款</a>
           </div>
-
-
     </div>
      )
     }
