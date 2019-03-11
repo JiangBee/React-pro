@@ -1,4 +1,5 @@
 import React,{ Component } from 'react'
+import {Link} from "react-router-dom";
 import './Title.scss';
 // import { NavLink } from 'react-router-dom'
 class Title extends Component {
@@ -9,9 +10,9 @@ class Title extends Component {
           <em className="iconfont icon-shugang"></em>
           {this.props.title.tlt}
         </h3>
-        <a href={ this.props.title.url }>
+        <Link to={ this.props.title.url }>
           <em className="iconfont icon-xuanxiang"></em>
-        </a>
+        </Link>
       </div>
     )
   }

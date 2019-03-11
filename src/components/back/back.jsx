@@ -7,7 +7,7 @@ class Back extends React.Component{
   }
   render () {
     return (
-      <button className="fa fa-reply fa-lg" onClick={this.goback.bind(this)}></button>
+      <button className="fa fa-reply fa-lg backcolor" onClick={this.goback.bind(this)}></button>
     )
   }
 }

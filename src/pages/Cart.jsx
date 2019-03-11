@@ -179,9 +179,9 @@ class Com extends React.Component {
     })
     apiCookie.setCookie('goodlist', JSON.stringify(this.state.goodlist), 10)
     cartApi.responseGoodsData(this.state.userid,JSON.stringify(this.state.goodlist))
-      .then(data => {
-        console.log(data)
-      })
+      // .then(data => {
+      //   // console.log(data)
+      // })
   }
 
   //实现复选框 选择 与 反选 的操作

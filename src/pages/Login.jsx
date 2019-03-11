@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { InputItem, Toast, Button } from 'antd-mobile';
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Back from '@/components/back/back.jsx';
 import '@/scss/login.scss';
 import api from '@/api/user'
@@ -79,7 +79,7 @@ class Com extends Component {
 
     render () {
       let type = '';
-      let disabled = true
+      let disabled = true;
       if (this.state.hasError === false && this.state.hasPasswordError === false && this.state.value.length > 0 && this.state.passwordvalue.length > 0) {
         type = 'primary';
         disabled = false
@@ -91,7 +91,7 @@ class Com extends Component {
             <div className="top-operation-bar">
                 {/*<button  className="fa fa-chevron-circle-left fa-2x" onclick="javascript:window.location='/home'" type="button"></button>*/}
               <Back props={this.props}></Back>
-                <a href="/#/userapp/register" className="register">注册</a>
+                <Link to="/userapp/register" className="register">注册</Link>
             </div>
             <div className="tip">Yoho!Family账号可登录Yoho!Buy有货？</div>
         </div>

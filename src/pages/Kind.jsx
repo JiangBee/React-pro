@@ -196,10 +196,10 @@ class Com extends Component {
       <div className="content" id="kinB">
         <div className="kindSearchbox">
           <div className="kindSearch">
-            <a href="/#/search">
+            <Link to="/search">
               <i className="iconfont icon-search"></i>
               <p>搜索商品</p>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="kindBox">

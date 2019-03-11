@@ -57,7 +57,7 @@ class Com extends Component {
     //登录注册部分
     let login;
     let userid = window.localStorage.getItem("userid");
-    if (window.localStorage.getItem("isLogin") === "ok") {
+    if (window.localStorage.getItem("isLogin") === "ok" ) {
       login =<a className="login-remove">
         {/*<button className="login-center" onClick={this.golaginFn.bind(this, 'login')}>登录</button>*/}
         <span>Hi,{userid}</span>
@@ -166,9 +166,9 @@ class Com extends Component {
           {listHtml}
         </ul>
         <p className="op-row">
-          <a href="/#/loginapp/login">登录</a>
+          <Link to="/userapp/login">登录</Link>
           <span className="sep-line">|</span>
-          <a href="/#/registerapp/register">注册</a>
+          <Link to="/userapp/register">注册</Link>
           <span className="back-to-top" onClick={
             () => {
               this.scrollToAnchor("top");

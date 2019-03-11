@@ -17,7 +17,7 @@ class Com extends Component {
       list: [],
       bannerdata: [],
       imgHeight: 200,
-      title: [{'tlt': '丽人专区', 'url': '/#/division/cosmetics'}, {'tlt': '服装专区', 'url': '/#/division/clothing'}, {'tlt': '轻奢专区', 'url': '/#/division/luxury'}],
+      title: [{'tlt': '丽人专区', 'url': '/division/cosmetics'}, {'tlt': '服装专区', 'url': '/division/clothing'}, {'tlt': '轻奢专区', 'url': '/division/luxury'}],
       cosmeticsList: [],
       clothingList: [],
       luxuryList: []

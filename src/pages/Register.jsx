@@ -87,10 +87,10 @@ class Com extends Component {
         disabled = false
       }
         return (
-        <div className = "content">
+        <div className = "content registercontent">
         <div className="top">
         {/*<button className="fa fa-chevron-circle-left fa-2x" onclick="javascript:history.go(-1)" type="button"></button>*/}
-        <Back props={this.props}></Back>
+        <Back props={this.props} className="backcolor"></Back>
         <span className="page-title">注册</span>
         </div>
         <InputItem
@@ -117,7 +117,7 @@ class Com extends Component {
             <option value="+886">中国台湾</option>
             <option value="+852">中国香港</option>
           </select>
-
+          <span className="fa fa-caret-square-o-down"></span>
           </InputItem>
           <InputItem
             type="password"
@@ -129,16 +129,6 @@ class Com extends Component {
             value={this.state.passwordvalue}
           >
           </InputItem>
-            <InputItem
-            type="password"
-            clear
-            placeholder="确认密码"
-            error={this.state.hasPasswordError}
-            onErrorClick={this.onPasswordErrorClick.bind(this)}
-            onChange={this.onPasswordChange.bind(this)}
-            value={this.state.passwordvalue}
-          >
-            </InputItem>
           <Button type={ type } disabled = { disabled } onClick = { this.registerFn.bind(this, this.state.value, this.state.passwordvalue)}>注册</Button>
 
           <div className="protocol">
