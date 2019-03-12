@@ -7,7 +7,7 @@
     padding: 0 .16rem;
     @include flexbox();
     line-height: .44rem;
-    font-size: .16rem;
+    //font-size: .16rem;
     background-color: #acc;
     @include justify-content(space-between);
   }

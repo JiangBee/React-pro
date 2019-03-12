@@ -22,7 +22,7 @@ html {touch-action:none;}
         @include flex-direction();
         background: #fff;
         color:#999;
-        @include align-items(); 
+        @include align-items();
         i {
           margin:0 .1rem;
         }
@@ -59,7 +59,7 @@ html {touch-action:none;}
       }
       li:nth-child(2) {
         span {
-          @include border(0 1px, #ccc, solid); 
+          @include border(0 1px, #ccc, solid);
         }
       }
     }
@@ -69,7 +69,7 @@ html {touch-action:none;}
     @include rect(100%, 100%);
     @include flexbox();
     @include flex-direction();
-    // overflow: hidden;
+     //overflow: hidden;
     background: #fff;
     .kindBarbox {
       position: relative;
@@ -89,7 +89,7 @@ html {touch-action:none;}
         }
       }
     }
-    
+
     .kindList {
       @include flex();
       // height:100%;
@@ -124,6 +124,6 @@ html {touch-action:none;}
         }
       }
     }
-  }   
+  }
 }
 

@@ -8,7 +8,22 @@ class Com extends Component {
     super(props);
     this.state = {
       list: [],
+      count:''
     }
+  }
+  componentWillMount() {
+    // JSON.parse(window.localStorage.getItem("collArr"))
+    console.log(JSON.parse(window.localStorage.getItem("collArr")))
+    if (JSON.parse(window.localStorage.getItem("collArr")) === null) {
+      this.setState({
+        count: 0
+      })
+    } else {
+      this.setState({
+        count: (JSON.parse(window.localStorage.getItem("collArr"))).length
+      })
+    }
+
   }
 
   componentDidMount() {
@@ -63,7 +78,7 @@ class Com extends Component {
         <span>Hi,{userid}</span>
       </a>
     } else {
-      login =<a className="login-btn">
+      login = <a className="login-btn">
         <button className="login-center" onClick={this.golaginFn.bind(this, 'login')}>登录</button>
         <button className="login-center" onClick={this.goregisterFn.bind(this, 'register')}>注册</button>
       </a>
@@ -80,10 +95,6 @@ class Com extends Component {
               <div className="name eps">YOHO-有货</div>
             </div>
           </div>
-          {/*<a className="login-btn">*/}
-            {/*<button className="login-center" onClick={this.golaginFn.bind(this, 'login')}>登录</button>*/}
-            {/*<button className="login-center" onClick={this.goregisterFn.bind(this, 'register')}>注册</button>*/}
-          {/*</a>*/}
           {login}
         </div>
         <div className="list1">
@@ -105,7 +116,7 @@ class Com extends Component {
             <div className="item1"><span className="fa fa-truck fa-lg"></span><p>待收货</p></div>
           </li>
           <li className="li2">
-            <div className="item1"><span>0</span><p>商品收藏</p></div>
+            <div className="item1"><span>{this.state.count*1 >0 ? this.state.count:0}</span><p><Link to="/userapp/collect">商品收藏</Link></p></div>
             <div className="item1"><span>0</span><p>品牌收藏</p></div>
             <div className="item1"><span>0</span><p>浏览记录</p></div>
           </li>
@@ -166,9 +177,9 @@ class Com extends Component {
           {listHtml}
         </ul>
         <p className="op-row">
-          <Link to="/userapp/login">登录</Link>
-          <span className="sep-line">|</span>
-          <Link to="/userapp/register">注册</Link>
+          {/*<Link to="/userapp/login">登录</Link>*/}
+          {/*<span className="sep-line">|</span>*/}
+          {/*<Link to="/userapp/register">注册</Link>*/}
           <span className="back-to-top" onClick={
             () => {
               this.scrollToAnchor("top");

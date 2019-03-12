@@ -1,0 +1,82 @@
+@import '@/qunar/reset.scss';
+.collectBox {
+  font-size: .12rem;
+  @include rect(100%, 100%);
+  @include flexbox();
+  @include flex-direction(column);
+  .collectHeader {
+    @include rect(100%, .44rem);
+    background: #acc;
+    @include flexbox();
+    @include justify-content(space-between);
+    @include align-items();
+    padding: 0 .16rem;
+  }
+  .collectContent {
+    @include flex(1);
+    width:100%;
+    .collEmpty {
+    @include rect(100%, 100%);
+    @include flexbox();
+    @include align-items();
+      .emptyBox {
+        @include rect(100%, 80%);
+        @include flexbox();
+        @include flex-direction(column);
+        // @include justify-content();
+        @include align-items();
+        span {
+          font-size: 1rem;
+          color:#ccc;
+        }
+        h3 {
+          background: #666;
+          @include rect(50%, .4rem);
+          border-radius: .05rem;
+          font: .16rem/.4rem "";
+          color: #fff;
+          text-align: center;
+          margin-top:.2rem;
+        }
+      }
+    }
+    .collHave{
+      @include flex(1);
+      @include rect(100%, auto);
+      padding:.1rem;
+      li {
+        @include flexbox();
+        @include flex-direction();
+        margin-top:.1rem;
+        h4 {
+          width:30%;
+          img {
+           height:.8rem;
+            border-radius: .05rem
+          }
+        }
+        .collCenter {
+          @include flex(1);
+          p {
+            min-height: .54rem;
+          }
+        }
+        s {
+          width:.16rem;
+        }
+      }
+    }
+  }
+  .collectFooter {
+    position: relative;
+    p {
+      position: fixed;
+      background-color: #acc;
+      bottom: 0;
+      @include rect(100%, .6rem);
+      line-height: .6rem;
+      text-align: center;
+      z-index: 6;
+    }
+  }
+}

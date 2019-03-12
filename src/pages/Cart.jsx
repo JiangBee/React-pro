@@ -104,11 +104,6 @@ class Com extends React.Component {
     this.setState({
       goodlist: goodlist
     });
-
-    //
-    // setTimeout(() => {
-    //   Toast.hide();
-    // }, 1000);
   }
 
 
@@ -166,9 +161,9 @@ class Com extends React.Component {
     // console.log(id);
     this.setState({
       goodlist: this.state.goodlist.filter((item, index) => {
-        if (item.productId !== id) {
+        if (item.productId === id) {
           this.state.goodlist.splice(index,1);
-          return item;
+          // return item;
         } else {
           return item;
         }

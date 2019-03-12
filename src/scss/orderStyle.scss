@@ -52,6 +52,7 @@
         margin-top: .05rem;
         border-bottom: .01rem solid #f0f0f0;
         padding-bottom: .05rem;
+        min-height: .69rem;
         p.img{
           @include rect(.4rem,.4rem);
           @include overflow();
@@ -62,12 +63,13 @@
           }
         }
         div{
+          @include flex();          
           @include flexbox();
           @include flex-direction(column);
           @include justify-content(space-between);
           overflow: hidden;
           .productname{
-
+            display: inline-block;
           }
           .goodsinfo{
             @include rect(100%,auto);

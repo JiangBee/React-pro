@@ -167,6 +167,45 @@ class Com extends React.Component {
       this.props.history.push("/userapp/register");
     }
   }
+
+  // 收藏商品
+  goCollect () {
+    var isNew = true
+    if (localStorage.getItem('collArr')) {
+      var arr = []
+      arr = JSON.parse(localStorage.getItem('collArr'));
+      for(var i = 0 ; i< arr.length ; i++){
+        if (arr[i].productId === this.state.productId) {
+          console.log('已有')
+          isNew = false;
+        }
+      };
+      if(isNew === true){
+        collArr = {
+          imgUrl: this.state.imgUrl,
+          price: this.state.price,
+          productName: this.state.productName,
+          productId: this.state.productId
+        }
+        arr.push(collArr)
+        localStorage.setItem('collArr', JSON.stringify(arr))
+        Toast.info('收藏成功', 1);
+      }
+    } else {
+      console.log('创建')
+      var arr = []
+      var collArr = {
+        imgUrl: this.state.imgUrl,
+        price: this.state.price,
+        productName: this.state.productName,
+        productId: this.state.productId
+      }
+      arr.push(collArr)
+      localStorage.setItem('collArr', JSON.stringify(arr))
+      Toast.info('收藏成功', 1);
+    }
+  }
+
   render () {
     return (
       <div className="box">
@@ -203,7 +242,7 @@ class Com extends React.Component {
               </li>
               <li>
                 <span className="fa fa-heartbeat fa-lg"></span>
-                <p>收藏</p>
+                <p onClick={this.goCollect.bind(this)}>收藏</p>
               </li>
               <li>
                 <span></span>
