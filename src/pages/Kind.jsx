@@ -42,8 +42,8 @@ class Com extends Component {
   kindClo = (e) => {
     this.setState({
       num: parseInt(e.currentTarget.getAttribute('index'), 10)
-    })
-    this.val = e.target.innerText
+    });
+    this.val = e.target.innerText;
     api.requestCloSort(this.val).then(data => {
       this.setState({
         listclo: data

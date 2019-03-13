@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '@/scss/Collect.scss';
 import Back from "@/components/back/back.jsx";
+import {Link} from "react-router-dom";
 class Com extends Component {
   componentWillMount() {
     this.setState({
@@ -29,13 +30,13 @@ class Com extends Component {
 
   render () {
     var html = '';
-    if (this.state.collArr.length === 0) {
+    if (this.state.collArr === null || this.state.collArr.length === 0 ) {
         html = (
         <div className="collEmpty">
           <div className="emptyBox">
             <span className="iconfont icon-shoucang"></span>
             <p>您暂无收藏任何商品</p>
-            <h3>随便逛逛</h3>
+            <h3><Link to="/home">随便逛逛</Link></h3>
           </div>
         </div>
         )
@@ -47,7 +48,9 @@ class Com extends Component {
                 return(
                   <li key={index}>
                     <h4>
-                      <img src={item.imgUrl} alt=""/>
+                      <Link to={"/detail/" + item.productId}>
+                        <img src={item.imgUrl} alt=""/>
+                      </Link>
                     </h4>
                     <div className="collCenter">
                       <p>{ item.productName }</p>

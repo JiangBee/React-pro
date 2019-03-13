@@ -2,18 +2,19 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import '@/scss/user.scss';
+import { Toast } from 'antd-mobile';
 
 class Com extends Component {
   constructor(props) {
     super(props);
     this.state = {
       list: [],
-      count:''
+      count:'',
+      login:'',
+      show:''
     }
   }
   componentWillMount() {
-    // JSON.parse(window.localStorage.getItem("collArr"))
-    console.log(JSON.parse(window.localStorage.getItem("collArr")))
     if (JSON.parse(window.localStorage.getItem("collArr")) === null) {
       this.setState({
         count: 0
@@ -24,10 +25,27 @@ class Com extends Component {
       })
     }
 
+    if (window.localStorage.getItem("isLogin") === "ok" ) {
+      this.setState({
+        login: <Link className="login-remove" to="">
+          <span>Hi,{window.localStorage.getItem("userid")}</span>
+        </Link>
+      })
+    } else {
+      this.setState({
+        login:  <Link className="login-btn" to="">
+          <button className="login-center" onClick={this.golaginFn.bind(this, 'login')}>登录</button>
+          <button className="login-center" onClick={this.goregisterFn.bind(this, 'register')}>注册</button>
+        </Link>
+      })
+    }
+
   }
 
   componentDidMount() {
-    axios.get('http://47.102.124.49:3000/api/product?pageNumber=50')
+
+
+    axios.get('http://47.102.124.49:3000/api/product?pageNumber=10')
       .then(data => {
         // console.log(data.data.data)
         this.setState({
@@ -46,10 +64,23 @@ class Com extends Component {
     this.props.history.push('/userapp/' + type)
   }
 
-  //锚点定为
+  //锚点定位
   scrollToAnchor = (id) => {
     document.getElementById(id).scrollIntoView();
   };
+
+  // 退出登录模块
+  signout () {
+    window.localStorage.clear('isLogin');
+    window.localStorage.clear('userid');
+    this.setState({
+      login:  <a className="login-btn">
+        <button className="login-center" onClick={this.golaginFn.bind(this, 'login')}>登录</button>
+        <button className="login-center" onClick={this.goregisterFn.bind(this, 'register')}>注册</button>
+      </a>
+    });
+    Toast.info('已退出登录', 1);
+  }
 
   render() {
     let listarr = this.state.list;
@@ -69,20 +100,7 @@ class Com extends Component {
       })
     }
 
-    //登录注册部分
-    let login;
-    let userid = window.localStorage.getItem("userid");
-    if (window.localStorage.getItem("isLogin") === "ok" ) {
-      login =<a className="login-remove">
-        {/*<button className="login-center" onClick={this.golaginFn.bind(this, 'login')}>登录</button>*/}
-        <span>Hi,{userid}</span>
-      </a>
-    } else {
-      login = <a className="login-btn">
-        <button className="login-center" onClick={this.golaginFn.bind(this, 'login')}>登录</button>
-        <button className="login-center" onClick={this.goregisterFn.bind(this, 'register')}>注册</button>
-      </a>
-    }
+
     return (
       <div className="content">
         <div className="banner">
@@ -95,19 +113,19 @@ class Com extends Component {
               <div className="name eps">YOHO-有货</div>
             </div>
           </div>
-          {login}
+          {this.state.login}
         </div>
         <div className="list1">
           <p className="left">默认购物频道</p>
-          <a href="#" className="right">男生NEM
+          <Link to="" className="right">
             <span className="span2">></span>
-          </a>
+          </Link>
         </div>
         <div className="list2">
           <p className="left">我的订单</p>
-          <a href="#" className="right">全部订单
+          <Link to="" className="right">全部订单
             <span className="span2">></span>
-          </a>
+          </Link>
         </div>
         <ul className="list3">
           <li className="li1">
@@ -122,39 +140,39 @@ class Com extends Component {
           </li>
         </ul>
         <div className="list4">
-          <h3 className="fa fa-money fa-lg"></h3>
+          <h3 className="fa fa-money fa-lg"> </h3>
           <div className="list-right">
             <i>优惠券</i>
-            <a href="#" className="right">
+            <Link to="" className="right">
               <span className="span2">></span>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="list5">
-          <h3 className="fa fa-dollar fa-lg"></h3>
+          <h3 className="fa fa-dollar fa-lg"> </h3>
           <div className="list-right">
             <i>有货币</i>
-            <a href="#" className="right">
+            <Link to="" className="right">
               <span className="span2">></span>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="list4">
-          <h3 className="fa fa-commenting fa-lg"></h3>
+          <h3 className="fa fa-commenting fa-lg"> </h3>
           <div className="list-right">
             <i>消息</i>
-            <a href="#" className="right">
+            <Link to="" className="right">
               <span className="span2">></span>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="list5">
-          <h3 className="fa fa-volume-control-phone fa-lg"></h3>
+          <h3 className="fa fa-volume-control-phone fa-lg"> </h3>
           <div className="list-right">
             <i>服务与反馈</i>
-            <a href="#" className="right">
+            <Link to="" className="right">
               <span className="span2">></span>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="banner-list">
@@ -178,7 +196,7 @@ class Com extends Component {
         </ul>
         <p className="op-row">
           {/*<Link to="/userapp/login">登录</Link>*/}
-          {/*<span className="sep-line">|</span>*/}
+          <button className="sep-line" onClick={this.signout.bind(this)}>退出登录</button>
           {/*<Link to="/userapp/register">注册</Link>*/}
           <span className="back-to-top" onClick={
             () => {

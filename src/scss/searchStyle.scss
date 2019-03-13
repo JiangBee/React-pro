@@ -8,6 +8,7 @@
     @include flexbox();
     line-height: .44rem;
     //font-size: .16rem;
+    color: #fff;
     background-color: #acc;
     @include justify-content(space-between);
   }

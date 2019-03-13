@@ -10,7 +10,7 @@ class Com extends Component {
     super(props);
     this.state = {
       hasError: false,
-      value: '18813007814',
+      value: '18895379820',
       hasPasswordError: false,
       passwordvalue: '123456'
     }
@@ -57,10 +57,8 @@ class Com extends Component {
           }
 
           loginFn (username, password) {
-            console.log(username, password);
             api.requestData({username, password})
               .then(data => {
-                console.log(data);
                 if (data === 1) {
                   Toast.success('登录成功', 1);
                   window.localStorage.setItem("isLogin","ok");

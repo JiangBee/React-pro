@@ -8,7 +8,7 @@
   @include flex-wrap(wrap);
 
   a{
-    @include rect(45%, auto);
+    @include rect(35%, auto);
     @include flexbox();
     @include justify-content();
     @include align-items();

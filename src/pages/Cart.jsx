@@ -136,6 +136,8 @@ class Com extends React.Component {
         if(item.productId === id) {
           if (item.count *1 >1) {
             item.count = item.count *1 - 1;
+          } else {
+            Toast.info("不能再减了哦",1)
           }
           return item;
         } else {
@@ -146,13 +148,9 @@ class Com extends React.Component {
     this.SumPrice();
     apiCookie.setCookie('goodlist', JSON.stringify((this.state.goodlist)));
     cartApi.responseGoodsData(this.state.userid,JSON.stringify(this.state.goodlist))
-      .then(data => {
-        console.log(data)
-      })
-  }
-
-   failToast  () {
-    Toast.fail('Load failed !!!', 1);
+      // .then(data => {
+        // console.log(data)
+      // })
   }
 
   //删除操作
@@ -262,12 +260,6 @@ class Com extends React.Component {
       }
     })
 
-    //用户点击提交时, 将本地存储的商品列表信息进行存储，
-    // let goodtruelist = JSON.parse(apiCookie.getCookie('goodlist'));
-    // console.log(goodtruelist);
-    // cartApi.responseGoodsData()
-    // console.log(shopping);
-
     window.localStorage.setItem("shopping", JSON.stringify(shopping))
     window.localStorage.setItem("sumprice", JSON.stringify(this.state.sum_price));
     if(this.state.sum_price !== 0) {
@@ -280,27 +272,30 @@ class Com extends React.Component {
     let html =[];
 
     //商品列表
-    if (this.state.goodlist === null) {
+    if (this.state.goodlist.length === 0) {
       html.push(
-        <h2 className="showNothing">赶紧选购吧！！</h2>
+        <div className="showNothing" key="111">
+          <h2 >赶紧选购吧！</h2>
+          <Link to="/home">去逛逛</Link>
+        </div>
       )
     } else {
       this.state.goodlist.map((item, index) => {
         html.push(
-          <li key={index}>
+          <li key={index} >
             <div className="cartleft" key={index}>
               <input type="checkbox" className="choose" checked={item.checked} onChange={
                 (e) => {this.CheckAllorNoAll(e,item.productId)}
               }/>
-              <p>
+              <Link to={"/detail/" + item.productId}>
                 <img src={item.imgUrl} alt={item.productId}/>
-              </p>
+              </Link>
             </div>
             <div className="cartright">
               <h3>{item.productName}</h3>
               <div>
                 <p>￥:{item.price}</p>
-                <div className="right">
+                <div className="_right">
                   <button onClick={
                     (e) => {
                       this.reduce(e,item.productId);

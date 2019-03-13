@@ -33,10 +33,15 @@
           background: #666;
           @include rect(50%, .4rem);
           border-radius: .05rem;
-          font: .16rem/.4rem "";
-          color: #fff;
+          //font: .16rem/.4rem "";
+
           text-align: center;
           margin-top:.2rem;
+          line-height: .4rem;
+          font-size: .16rem;
+          a{
+            color: #fff;
+          }
         }
       }
     }
@@ -50,10 +55,13 @@
         margin-top:.1rem;
         h4 {
           width:30%;
-          img {
-           height:.8rem;
-            border-radius: .05rem
+          a{
+            img {
+              height:.8rem;
+              border-radius: .05rem
+            }
           }
+
         }
         .collCenter {
           @include flex(1);

@@ -9,7 +9,7 @@ class Com extends Component {
     super(props);
     this.state = {
       hasError: false,
-      value: '18813007814',
+      value: '18895379820',
       hasPasswordError: false,
       passwordvalue: '123456'
     }

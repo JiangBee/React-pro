@@ -176,7 +176,7 @@ class Com extends React.Component {
       arr = JSON.parse(localStorage.getItem('collArr'));
       for(var i = 0 ; i< arr.length ; i++){
         if (arr[i].productId === this.state.productId) {
-          console.log('已有')
+          Toast.info('该商品已收藏！', 1);
           isNew = false;
         }
       };
@@ -192,7 +192,7 @@ class Com extends React.Component {
         Toast.info('收藏成功', 1);
       }
     } else {
-      console.log('创建')
+      // console.log('创建')
       var arr = []
       var collArr = {
         imgUrl: this.state.imgUrl,
@@ -253,7 +253,7 @@ class Com extends React.Component {
           <div className="detailinfo">
             <div className="price-description page-block">
               <h2 className="title">
-                特别说明
+                特别说明 &emsp;
                 <span className="en-title">SPECIAL DESCRIPTION</span>
               </h2>
               <div className="price-desc-detail">
