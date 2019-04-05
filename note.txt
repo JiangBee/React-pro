@@ -1,4 +1,4 @@
-1、react的脚手架
+﻿1、react的脚手架
   https://facebook.github.io/create-react-app/docs/getting-started
 
   首先如果自己的电脑中含有create-react-app的全局安装过的，先通过npm uninstall create-react-app -g卸载掉
@@ -32,4 +32,5 @@
         '@': path.join(__dirname, '../', 'src')
       }
     },
+5.sourseTree test
     
